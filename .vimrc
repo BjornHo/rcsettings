@@ -7,7 +7,8 @@ filetype off
 
 "show line numbers
 set number	 
-
+"line break at 80 characters
+setlocal textwidth=80
 filetype indent plugin on
 filetype plugin on
 
