@@ -15,7 +15,7 @@ filetype plugin on
 "directory.
 set exrc
 set secure
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "Needed for airline pluging
 set laststatus=2
 set ttimeoutlen=50
