@@ -11,7 +11,11 @@ set number
 setlocal textwidth=80
 filetype indent plugin on
 filetype plugin on
-
+"Useful for C programming. Force vim to source .vimrc if present in project
+"directory.
+set exrc
+set secure
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "Needed for airline pluging
 set laststatus=2
 set ttimeoutlen=50
