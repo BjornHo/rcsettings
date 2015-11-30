@@ -16,9 +16,11 @@ filetype plugin on
 set exrc
 set secure
 "let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+"
 "Needed for airline pluging
 set laststatus=2
 set ttimeoutlen=50
+
 
 execute pathogen#infect()
 
@@ -60,4 +62,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+noremap <F5> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
+
+" Apply YCM FixIt
+map <F9> :YcmCompleter FixIt<CR>
 
