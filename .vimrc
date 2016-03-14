@@ -37,6 +37,10 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -pdf -f $*'
 let g:LatexBox_latexmk_options = "-pvc -pdfps"
 let g:Tex_ViewRule_pdf = 'thunar'
+let g:LatexBox_latexmk_preview_continuously=1
+
+"if it does not work, use command latexmk filename -pvc on a terminal and it
+"will automatically compile.
 
 "spell checks
 "set spell spelllang=en_us
@@ -61,7 +65,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes':   [],'passive_filetypes': [] }
+noremap <C-w>e :SyntasticCheck<CR>
+noremap <C-w>f :SyntasticToggleMode<CR>
+"Ctrl-w + e shall enable checking
+"Ctrl-w + f shall disable checking 
 noremap <F5> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
 
 " Apply YCM FixIt
