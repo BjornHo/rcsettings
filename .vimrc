@@ -9,12 +9,16 @@ filetype off
 set number	 
 "line break at 80 characters
 setlocal textwidth=80
+"highlight search
+set hlsearch
 filetype indent plugin on
 filetype plugin on
 "Useful for C programming. Force vim to source .vimrc if present in project
 "directory.
 set exrc
 set secure
+"Used for ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "
 "Needed for airline pluging
@@ -72,6 +76,22 @@ noremap <C-w>f :SyntasticToggleMode<CR>
 "Ctrl-w + f shall disable checking 
 noremap <F5> :w<CR> :silent !clear; make<CR> :!echo "--------------- Running ---------------"; echo; "./%<"<CR>
 
+" Search for the ... arguments separated with whitespace (if no '!'),
+" or with non-word characters (if '!' added to command).
+" For example :S Hello World
+function! SearchMultiLine(bang, ...)
+  if a:0 > 0
+    let sep = (a:bang) ? '\_W\+' : '\_s\+'
+    let @/ = join(a:000, sep)
+  endif
+endfunction
+command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR> 
+
 " Apply YCM FixIt
 map <F9> :YcmCompleter FixIt<CR>
+
+"Ctrl + p
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
